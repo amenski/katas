@@ -11,7 +11,7 @@
     <modules>
         <module>tennis-game</module>
         <module>product-filter</module>
-        <module>tddmicroexercises</module>
+        <module>TirePressure</module>
     </modules>
 
     <properties>
