@@ -15,3 +15,16 @@ pressure and set an alarm if the pressure falls outside of the expected range. T
 the behaviour of a real tire sensor, providing random but realistic values.
 
 https://github.com/emilybache/Racing-Car-Katas/blob/main/Java/TirePressureMonitoringSystem
+
+
+
+
+## Notes
+This implementation is not following the Single Responsibility Principle. 
+The Alarm class is responsible for monitoring the tire pressure and setting an alarm if the pressure falls outside of the expected range. 
+The Alarm class is also responsible for checking the pressure value and setting the alarm. This is a violation of the Single Responsibility Principle. 
+The Alarm class should only be responsible for setting the alarm. The Sensor class should be responsible for monitoring the tire pressure.
+
+So, it violets (The violation of the DIP and the implicit dependency makes also impossible to fulfill the OCPrinciple)
+- DI: as DI says
+  - Abstractions should not depend on details. But, details should depend on abstractions. 

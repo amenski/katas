@@ -2,13 +2,23 @@ package it.aman;
 
 public class Alarm {
 
-    private Sensor sensor = new Sensor();
+    private final Sensor sensor;
+    private final PressureRange pressureRange;
 
-    public boolean isAlarmOn() {
-        return this.sensor.isPressureThresholdReached();
+    private boolean alarmOn = false;
+
+    public Alarm(Sensor sensor, PressureRange pressureRange) {
+        this.sensor = sensor;
+        this.pressureRange = pressureRange;
     }
 
-    public void setSensor(Sensor sensor) {
-        this.sensor = sensor;
+    public void check() {
+        if (new PressureRangeSpecification(pressureRange).isSatisfiedBy(sensor)) {
+            this.alarmOn = true;
+        }
+    }
+
+    public boolean isAlarmOn() {
+        return this.alarmOn;
     }
 }

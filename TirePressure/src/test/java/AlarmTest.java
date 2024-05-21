@@ -1,4 +1,5 @@
 import it.aman.Alarm;
+import it.aman.PressureRange;
 import it.aman.Sensor;
 import org.junit.jupiter.api.Test;
 
@@ -7,17 +8,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class AlarmTest {
 
+    private final PressureRange validPressureRange = new PressureRange(17, 21);
+
     @Test
     public void testAlarmIsFired() {
-        Alarm alarm = new Alarm();
-        alarm.setSensor(new MockSensor(15));
+        Alarm alarm = new Alarm(new MockSensor(15), validPressureRange);
+        alarm.check();
         assertTrue(alarm.isAlarmOn());
     }
 
     @Test
     public void testAlarmIsNotFired() {
-        Alarm alarm = new Alarm();
-        alarm.setSensor(new MockSensor(17));
+        Alarm alarm = new Alarm(new MockSensor(17), validPressureRange);
+        alarm.check();
         assertFalse(alarm.isAlarmOn());
     }
 
@@ -34,10 +37,6 @@ public class AlarmTest {
         @Override
         public double popNextPressurePsiValue() {
             return this.nextPressurePsiValue;
-        }
-
-        public double getNextPressurePsiValue() {
-            return nextPressurePsiValue;
         }
     }
 }

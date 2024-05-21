@@ -9,14 +9,6 @@ import java.util.Random;
 
 public class Sensor {
     public static final double OFFSET = 16;
-    private static final double LOW_PRESSURE_THRESHOLD = 17;
-    private static final double HIGH_PRESSURE_THRESHOLD = 21;
-
-
-    public boolean isPressureThresholdReached() {
-        double psiPressureValue = this.popNextPressurePsiValue();
-        return psiPressureValue < LOW_PRESSURE_THRESHOLD || HIGH_PRESSURE_THRESHOLD < psiPressureValue;
-    }
 
     public double popNextPressurePsiValue() {
         double pressureTelemetryValue;
